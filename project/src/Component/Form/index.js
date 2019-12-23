@@ -13,7 +13,14 @@ class Form extends React.Component{
            anos:'1'
      	}
      }
-
+      
+     createArr( length ){
+       const arr = [];
+       for(let cont = 1;cont<=length;cont++){
+         arr.push(cont);
+       }
+       return arr;
+     }
 
      render(){
      	return(
@@ -45,18 +52,11 @@ class Form extends React.Component{
                     onChange={(e)=>this.setState({anos:e.target.value})} 
                   >
                     { 
-                     
+                     this.createArr(100).map( (item)=>{
+                      return <option key={item} value={item}> {item} {item === 1 ? 'ano' : 'anos'} </option>
+                     } )    
                     }
-                    <option value='1'> 1 ano </option>
-                    <option value='2'> 2 anos </option>
-                    <option value='3'> 3 anos </option>
-                    <option value='4'> 4 anos </option>
-                    <option value='5'> 5 anos </option>
-                    <option value='6'> 6 anos </option>   
-                    <option value='7'> 7 anos </option>
-                    <option value='5'> 8 anos </option>
-                    <option value='6'> 9 anos </option>   
-                    <option value='7'> 10 anos </option>
+                
                   </select>
                  </label>
 

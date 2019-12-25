@@ -1,37 +1,17 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
 
-class Form extends React.Component{
-     
-     constructor(){
-     	super();
-     	this.state = {
-           name:'',
-           mensalidade:'',
-           anos:'1'
-     	}
-     }
-      
-     createArr( length ){
-       const arr = [];
-       for(let cont = 1;cont<=length;cont++){
-         arr.push(cont);
-       }
-       return arr;
-     }
-
-     render(){
-     	return(
+const Form = ({nome,mensalidade,anos})=>(
      		   <form id="form" onSubmit={(e)=>e.preventDefault() } >
 
                  <label>
                    Nome:
                   <input 
-                   name="name"
-                   value={this.state.name}
-                   onChange ={ (e)=> this.setState({name:e.target.value}) }         
+                   nome="nome"
+                   defaultValue={nome} 
                    />
                  </label>
 
@@ -40,33 +20,46 @@ class Form extends React.Component{
                    <input
                     name="mensalidade"
                     type="number"
-                    value={this.state.mensalidade}
-                    onChange={ (e)=> this.setState({mensalidade:e.target.value}) }
+                    defaultValue={mensalidade}
                     />
                  </label>
                  
                  <label>Tempo:
                   <select
                     name="anos" 
-                    value={this.state.anos} 
-                    onChange={(e)=>this.setState({anos:e.target.value})} 
+                    defaultValue={anos} 
                   >
+
                     { 
-                     this.createArr(100).map( (item)=>{
+                     Form.createArr(100).map( (item)=>{
                       return <option key={item} value={item}> {item} {item === 1 ? 'ano' : 'anos'} </option>
                      } )    
                     }
-                
+
                   </select>
                  </label>
 
                  <button className="simular" type="submit"> Simular </button>
 
      		   </form>
-     	      );
-     }
+);
 
-} 
+
+Form.createArr = ( length )=>{
+       const arr = [];
+       for(let cont = 1;cont<=length;cont++){
+         arr.push(cont);
+       }
+       return arr;
+}
+
+/* depois vejo isso  propTypes */
+
+Form.propTypes = {
+    nome: PropTypes.string.isRequired,
+    mensalidade: PropTypes.number.isRequired,
+    anos:PropTypes.number.isRequired,
+}
 
 
 export default Form;

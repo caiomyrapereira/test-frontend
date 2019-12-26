@@ -4,14 +4,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
-const Form = ({nome,mensalidade,anos})=>(
-     		   <form id="form" onSubmit={(e)=>e.preventDefault() } >
+const Form = ({nome, mensalidade, anos, changeNome, changeMensalidade, changeAnos, handlerSumbit})=>(
+     		   <form id="form" onSubmit={handlerSumbit} >
 
                  <label>
                    Nome:
                   <input 
                    nome="nome"
-                   defaultValue={nome} 
+                   value={nome}
+                   onChange={changeNome}
                    />
                  </label>
 
@@ -20,14 +21,16 @@ const Form = ({nome,mensalidade,anos})=>(
                    <input
                     name="mensalidade"
                     type="number"
-                    defaultValue={mensalidade}
+                    value={ mensalidade }
+                    onChange={changeMensalidade}
                     />
                  </label>
                  
                  <label>Tempo:
                   <select
                     name="anos" 
-                    defaultValue={anos} 
+                    value ={anos}
+                    onChange = {changeAnos}
                   >
 
                     { 
@@ -53,12 +56,15 @@ Form.createArr = ( length )=>{
        return arr;
 }
 
-/* depois vejo isso  propTypes */
 
 Form.propTypes = {
     nome: PropTypes.string.isRequired,
     mensalidade: PropTypes.number.isRequired,
     anos:PropTypes.number.isRequired,
+    changeNome:PropTypes.func.isRequired,
+    changeMensalidade:PropTypes.func.isRequired,
+    changeAnos:PropTypes.func.isRequired,
+    handlerSumbit:PropTypes.func.isRequired
 }
 
 

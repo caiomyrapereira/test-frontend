@@ -5,33 +5,32 @@ import PropTypes from 'prop-types';
 import Button from '../Button';
 import './style.css';
 
-const Form = ({nome, mensalidade, anos, changeNome, changeMensalidade, changeAnos, handlerSumbit})=>(
+const Form = ({name, monthlyPayment, year, changeName, changeMonthlyPayment, changeYear, handlerSumbit})=>(
      		   <form id="form" >
-
                  <label>
                    Nome:
                   <input 
-                   nome="nome"
-                   value={nome}
-                   onChange={changeNome}
+                   name="name"
+                   value={name}
+                   onChange={changeName}
                    />
                  </label>
 
                  <label>
                    Mensalidade:
                    <input
-                    name="mensalidade"
+                    name="monthlyPayment"
                     type="number"
-                    value={ mensalidade }
-                    onChange={changeMensalidade}
+                    value={ monthlyPayment }
+                    onChange={changeMonthlyPayment}
                     />
                  </label>
                  
                  <label>Tempo:
                   <select
-                    name="anos" 
-                    value ={anos}
-                    onChange = {changeAnos}
+                    name="year" 
+                    value ={year}
+                    onChange = {changeYear}
                   >
 
                     { 
@@ -58,12 +57,12 @@ Form.createArr = ( length )=>{
 
 
 Form.propTypes = {
-    nome: PropTypes.string.isRequired,
-    mensalidade: PropTypes.number.isRequired,
-    anos:PropTypes.number.isRequired,
-    changeNome:PropTypes.func.isRequired,
-    changeMensalidade:PropTypes.func.isRequired,
-    changeAnos:PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
+    monthlyPayment: PropTypes.number.isRequired,
+    year:PropTypes.number.isRequired,
+    changeName:PropTypes.func.isRequired,
+    changeMonthlyPayment:PropTypes.func.isRequired,
+    changeYear:PropTypes.func.isRequired,
     handlerSumbit:PropTypes.func.isRequired
 }
 

@@ -3,48 +3,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Form from '../Form';
+import Result from '../../Pages/Result';
 import './style.css'
 
-const Main =({ nome, mensalidade, anos, changeNome, changeMensalidade, changeAnos , resultado, handlerSumbit }  )=>(
+const Main =({ name, monthlyPayment, year, changeName, changeMonthlyPayment, changeYear , result, handlerSumbit, Previous }  )=>(
 
 	  <main id="main" > 
        
-	 	{ !resultado  && <h1 className="title"   >Simulador</h1>}
+	 	{ !result  && <h1 className="title"   >Simulador</h1>}
 	 	
-	 	{ !resultado   &&  
+	 	{ !result   &&  
 	 	 <Form
-	 	   nome={nome}
-	 	   mensalidade={mensalidade}
-	 	   anos={anos} 
-	 	   changeNome ={changeNome}
-	 	   changeMensalidade = {changeMensalidade}
-	 	   changeAnos ={changeAnos}
+	 	   name={name}
+	 	   monthlyPayment={monthlyPayment}
+	 	   year={year} 
+	 	   changeName ={changeName}
+	 	   changeMonthlyPayment = {changeMonthlyPayment}
+	 	   changeYear ={changeYear}
 	 	   handlerSumbit ={handlerSumbit}
 	 	  />
 	     }
 
 	     {
-	       !!resultado &&
-	       <div>
-	       <h1>Olá {nome}</h1>
-	       <p>juntado R${mensalidade} todos més,
-	       voce terá R${resultado} em {anos}anos</p>
-           <button>Simular Novamente</button>
-	       </div>	
+	       !!result &&
+	       <Result
+             name={name}
+             monthlyPayment={monthlyPayment}
+             year={year}
+             result = {result}
+             Previous = {Previous}
+	       />
 	     }
        
 	  </main>
 )
 
 Main.propTypes = {
-    nome: PropTypes.string.isRequired,
-    mensalidade:PropTypes.number.isRequired,
-    anos:PropTypes.number.isRequired,
-    resultado:PropTypes.number.isRequired,
-    changeNome:PropTypes.func.isRequired,
-    changeMensalidade:PropTypes.func.isRequired,
-    changeAnos:PropTypes.func.isRequired,
-    handlerSumbit:PropTypes.func.isRequired
+    name: PropTypes.string.isRequired,
+    monthlyPayment:PropTypes.number.isRequired,
+    year:PropTypes.number.isRequired,
+    result:PropTypes.number.isRequired,
+    changeName:PropTypes.func.isRequired,
+    changeMonthlyPayment:PropTypes.func.isRequired,
+    changeYear:PropTypes.func.isRequired,
+    handlerSumbit:PropTypes.func.isRequired,
+    Previous:PropTypes.func.isRequired
 }
 
 export default Main;

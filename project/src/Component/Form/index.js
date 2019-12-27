@@ -2,10 +2,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '../Button';
 import './style.css';
 
 const Form = ({nome, mensalidade, anos, changeNome, changeMensalidade, changeAnos, handlerSumbit})=>(
-     		   <form id="form" onSubmit={handlerSumbit} >
+     		   <form id="form" >
 
                  <label>
                    Nome:
@@ -41,8 +42,7 @@ const Form = ({nome, mensalidade, anos, changeNome, changeMensalidade, changeAno
 
                   </select>
                  </label>
-
-                 <button className="simular" type="submit"> Simular </button>
+                 <Button  handlerSumbit={handlerSumbit}  > Simular </Button>
 
      		   </form>
 );

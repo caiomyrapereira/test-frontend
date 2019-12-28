@@ -9,7 +9,7 @@ import './style.css'
 const Main =({ name, monthlyPayment, year, changeName, changeMonthlyPayment, changeYear , result, handlerSumbit, Previous }  )=>(
 
 	  <main id="main" > 
-       
+       <div className="card" >
 	 	{ !result  && <h1 className="title"   >Simulador</h1>}
 	 	
 	 	{ !result   &&  
@@ -34,13 +34,13 @@ const Main =({ name, monthlyPayment, year, changeName, changeMonthlyPayment, cha
              Previous = {Previous}
 	       />
 	     }
-       
+       </div>
 	  </main>
 )
 
 Main.propTypes = {
     name: PropTypes.string.isRequired,
-    monthlyPayment:PropTypes.number.isRequired,
+    monthlyPayment:PropTypes.string.isRequired,
     year:PropTypes.number.isRequired,
     result:PropTypes.number.isRequired,
     changeName:PropTypes.func.isRequired,

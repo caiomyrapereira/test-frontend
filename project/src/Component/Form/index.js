@@ -6,13 +6,14 @@ import Button from '../Button';
 import './style.css';
 
 const Form = ({name, monthlyPayment, year, changeName, changeMonthlyPayment, changeYear, handlerSumbit})=>(
-     		   <form id="form" >
+     		   <form id="form" onSubmit={handlerSumbit} >
                  <label>
                    Nome:
                   <input 
                    name="name"
                    value={name}
                    onChange={changeName}
+                   required
                    />
                  </label>
 
@@ -23,6 +24,7 @@ const Form = ({name, monthlyPayment, year, changeName, changeMonthlyPayment, cha
                     type="number"
                     value={ monthlyPayment }
                     onChange={changeMonthlyPayment}
+                    required
                     />
                  </label>
                  
@@ -41,7 +43,7 @@ const Form = ({name, monthlyPayment, year, changeName, changeMonthlyPayment, cha
 
                   </select>
                  </label>
-                 <Button  handlerSumbit={handlerSumbit}  > Simular </Button>
+                 <Button    > Simular </Button>
 
      		   </form>
 );
@@ -58,7 +60,7 @@ Form.createArr = ( length )=>{
 
 Form.propTypes = {
     name: PropTypes.string.isRequired,
-    monthlyPayment: PropTypes.number.isRequired,
+    monthlyPayment: PropTypes.string.isRequired,
     year:PropTypes.number.isRequired,
     changeName:PropTypes.func.isRequired,
     changeMonthlyPayment:PropTypes.func.isRequired,

@@ -9,18 +9,18 @@ class App extends React.Component{
     	super();
       this.state={
         name:'',
-        monthlyPayment:0,
+        monthlyPayment:'',
         year:1,
         result:0
       }     
     }
 
     changeName(e){
-      this.setState({name:e.target.value});
+       this.setState({name:e.target.value});
     }
 
     changeMonthlyPayment(e){
-       this.setState({monthlyPayment:Number(e.target.value)});
+       this.setState({monthlyPayment:e.target.value});
     }
 
     changeYear(e){
@@ -28,10 +28,11 @@ class App extends React.Component{
     }
 
     handlerSumbit(e){
-     e.preventDefault();
+       e.preventDefault();
        const { monthlyPayment , year  } = this.state;
        ajax().post('http://api.mathjs.org/v4/.',{expr:`${monthlyPayment} * (((1 + 0.00517) ^ ${year*12} - 1) / 0.00517)`})
        .then((response)=>{
+         if(!!this.state.name)
          this.setState({ result: Number(response.result) });
        })
     }
@@ -40,7 +41,7 @@ class App extends React.Component{
       e.preventDefault();    
       this.setState({
         name:'',
-        monthlyPayment:0,
+        monthlyPayment:'',
         year:1,
         result:0
       });

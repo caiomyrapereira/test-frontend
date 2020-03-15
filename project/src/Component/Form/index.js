@@ -1,51 +1,48 @@
-'use strict';
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import './style.css';
 
 const Form = ({name, monthlyPayment, year, changeName, changeMonthlyPayment, changeYear, handlerSumbit})=>(
-     		   <form id="form" onSubmit={handlerSumbit} >
-                 <label>
-                   Nome:
-                  <input 
-                   name="name"
-                   value={name}
-                   onChange={changeName}
-                   required
-                   />
-                 </label>
+     	  <form id="form" onSubmit={handlerSumbit} >
+          <label>
+            Nome:
+            <input 
+             name="name"
+             value={name}
+             onChange={changeName}
+             required
+            />    
+          </label>
 
-                 <label>
-                   Mensalidade:
-                   <input
-                    name="monthlyPayment"
-                    type="number"
-                    value={ monthlyPayment }
-                    onChange={changeMonthlyPayment}
-                    required
-                    />
-                 </label>
+          <label>
+            Mensalidade:
+            <input
+             name="monthlyPayment"
+             type="number"
+             value={ monthlyPayment }
+             onChange={changeMonthlyPayment}
+             required
+            />
+          </label>
                  
-                 <label>Tempo:
-                  <select
-                    name="year" 
-                    value ={year}
-                    onChange = {changeYear}
-                  >
+          <label>Tempo:
+            <select
+             name="year" 
+             value ={year}
+             onChange = {changeYear}
+            >
 
-                    { 
-                     Form.createArr(100).map( (item)=>{
-                      return <option key={item} value={item}> {item} {item === 1 ? 'ano' : 'anos'} </option>
-                     } )    
-                    }
+              { 
+                Form.createArr(100).map( (item)=>{
+                  return <option key={item} value={item}> {item} {item === 1 ? 'ano' : 'anos'} </option>
+                })    
+              }
 
-                  </select>
-                 </label>
-                 <Button    > Simular </Button>
-
-     		   </form>
+            </select>
+          </label>
+          <Button> Simular </Button>
+     		</form>
 );
 
 

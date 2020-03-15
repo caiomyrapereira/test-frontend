@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Form from '../Form';
@@ -8,34 +6,34 @@ import './style.css'
 
 const Main =({ name, monthlyPayment, year, changeName, changeMonthlyPayment, changeYear , result, handlerSumbit, Previous }  )=>(
 
-	  <main id="main" > 
-       <div className="card" >
-	 	{ !result  && <h1 className="title"   >Simulador</h1>}
+	    <main id="main" > 
+          <div className="card" >
+	 	    { !result  && <h1 className="title"   >Simulador</h1>}
 	 	
-	 	{ !result   &&  
-	 	 <Form
-	 	   name={name}
-	 	   monthlyPayment={monthlyPayment}
-	 	   year={year} 
-	 	   changeName ={changeName}
-	 	   changeMonthlyPayment = {changeMonthlyPayment}
-	 	   changeYear ={changeYear}
-	 	   handlerSumbit ={handlerSumbit}
-	 	  />
-	     }
+	 	    { !result   &&  
+	 	      <Form
+	 	        name={name}
+	 	        monthlyPayment={monthlyPayment}
+	 	        year={year} 
+	 	        changeName ={changeName}
+	 	        changeMonthlyPayment = {changeMonthlyPayment}
+	 	        changeYear ={changeYear}
+	 	        handlerSumbit ={handlerSumbit}
+	 	      />
+	        }
 
-	     {
-	       !!result &&
-	       <Result
-             name={name}
-             monthlyPayment={monthlyPayment}
-             year={year}
-             result = {result}
-             Previous = {Previous}
-	       />
-	     }
-       </div>
-	  </main>
+	        {
+	          !!result &&
+	          <Result
+               name={name}
+               monthlyPayment={monthlyPayment}
+               year={year}
+               result = {result}
+               Previous = {Previous}
+	          />
+	        }
+          </div>
+	    </main>
 )
 
 Main.propTypes = {

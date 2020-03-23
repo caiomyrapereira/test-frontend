@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {Fragment} from 'react';
 import ajax from '@fdaciuk/ajax';
 import Header from './Component/Header';
 import Main  from  './Component/Main';
@@ -50,7 +50,7 @@ class App extends React.Component{
 
     render(){
       return ( 
-    	<div className = "App" >
+    	<Fragment>
           <Header />
           <Main 
            name={this.state.name}
@@ -63,7 +63,7 @@ class App extends React.Component{
            handlerSumbit = {(e)=>this.handlerSumbit(e)}
            Previous = {(e)=>this.Previous(e)}
           />
-        </div>
+        </Fragment>
       );
     }
 
